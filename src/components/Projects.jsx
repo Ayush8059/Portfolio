@@ -63,6 +63,16 @@ const ProjectCard = ({ project, index }) => {
                   <Github size={20} />
                 </a>
               )}
+              {project.link && (
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                >
+                  <ExternalLink size={20} />
+                </a>
+              )}
             </div>
           </div>
 

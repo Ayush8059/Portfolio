@@ -3,30 +3,32 @@ export const PORTFOLIO_DATA = {
     name: "Ayush Raj",
     titleSequence: [
       "Full-Stack Developer",
-      "Data Engineer",
-      "AI/ML Enthusiast",
+      "Machine Learning Engineer",
+      "Data Analyst",
       "B.Tech @ SRM | CGPA 9.34"
     ],
     resumeLink: "/resume/Ayush_Raj_Resume.pdf",
     contact: {
       email: "ayushr8059@gmail.com",
       github: "https://github.com/Ayush8059",
-      linkedin: "https://linkedin.com/in/ayushraj"
+      linkedin: "https://linkedin.com/in/ayushraj",
+      phone: "+91 6207707493"
     },
-    bio: "I am a B.Tech Computer Science student at SRM Institute of Science and Technology, specializing in Big Data Analytics. With a deep passion for full-stack development, data engineering, and artificial intelligence, I constantly strive to build impactful solutions and scalable architectures. I enjoy weaving together complex backend systems with stunning frontend interfaces.",
+    bio: "Computer Science student specializing in Big Data Analytics with experience in full-stack development, machine learning, and data analytics. Skilled in building scalable web applications, AI-driven solutions, REST APIs, and dashboards using Python, React.js, JavaScript, SQL, and Power BI. Passionate about solving real-world problems through intelligent and user-focused technology solutions.",
     education: {
       university: "SRM Institute of Science and Technology",
-      degree: "B.Tech CSE - Big Data Analytics",
+      degree: "Bachelor of Technology, Computer Science",
       duration: "2023-2027",
       cgpa: "9.34"
     }
   },
   skills: [
     { category: "Programming", items: ["C++", "Python", "JavaScript", "HTML", "CSS (Tailwind)"] },
-    { category: "Frameworks", items: ["React.js", "Node.js", "Django", "Bootstrap", "Vite"] },
-    { category: "Databases", items: ["MySQL", "Hadoop", "PostgreSQL", "Supabase"] },
-    { category: "Tools", items: ["Power BI", "GitHub", "VS Code", "Cursor", "Figma"] },
-    { category: "Coursework", items: ["DSA", "DAA", "Data Science", "OS", "DBMS"] }
+    { category: "Frameworks & Libraries", items: ["React.js", "Node.js", "Express.js", "Bootstrap"] },
+    { category: "Databases & Big Data", items: ["MySQL", "MongoDB", "Supabase"] },
+    { category: "Tools", items: ["Power BI", "Git", "Postman", "MySql Workbench", "Figma", "GitHub"] },
+    { category: "Core Concepts", items: ["Machine Learning", "REST APIs", "Database Design", "Data Visualization", "Responsive UI"] },
+    { category: "Coursework", items: ["DSA", "Design and Analysis of Algorithms", "Data Science Fundamentals", "OS", "DBMS"] }
   ],
   projects: [
     {
@@ -52,6 +54,7 @@ export const PORTFOLIO_DATA = {
       tech: ["React.js", "Tailwind CSS", "Supabase", "Vite", "PostgreSQL"],
       description: "A full-stack sustainable fashion platform emphasizing real-time capabilities and a modern, high-end user experience.",
       github: "https://github.com/Ayush8059/Thrive-Fashion",
+      link: "https://thrive-fashion.vercel.app/",
       featured: false
     },
     {
@@ -72,10 +75,10 @@ export const PORTFOLIO_DATA = {
     }
   ],
   certifications: [
-    { name: "AWS Certified Cloud Practitioner", issuer: "AWS" },
-    { name: "AWS Certified AI Practitioner", issuer: "AWS" },
-    { name: "NPTEL - Introduction to Machine Learning", issuer: "NPTEL" },
-    { name: "NPTEL - Introduction to Database Systems", issuer: "NPTEL" },
-    { name: "3rd Place, Pokeverse Ideathon", issuer: "Competition" }
+    { name: "AWS Certified Cloud Practitioner", issuer: "AWS", link: "#" },
+    { name: "AWS Certified AI Practitioner", issuer: "AWS", link: "#" },
+    { name: "NPTEL — Introduction to Machine Learning", issuer: "NPTEL", link: "#" },
+    { name: "NPTEL — Introduction to the Database System", issuer: "NPTEL", link: "#" },
+    { name: "3rd Place, Pokeverse Ideathon", issuer: "Competition", link: "#" }
   ]
 };
