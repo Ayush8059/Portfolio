@@ -59,7 +59,7 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -92,7 +92,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 z-30 bg-cosmic-navy/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8"
+            className="fixed inset-0 z-30 bg-cosmic-navy/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link) => (
               <a

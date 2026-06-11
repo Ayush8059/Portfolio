@@ -165,7 +165,7 @@ export default function Hero3DScene() {
   return (
     <div className="w-full h-[350px] md:h-[500px] lg:h-[550px] relative z-20 cursor-grab active:cursor-grabbing">
       <Canvas
-        camera={{ position: [0, 0, 6.2], fof: 45 }}
+        camera={{ position: [0, 0, 6.2], fov: 45 }}
         gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping }}
       >
         <PortraitCard />

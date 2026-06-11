@@ -70,7 +70,7 @@ export default function About() {
         {/* Two Column Layout */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           {/* Left: Bio */}
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div variants={itemVariants} className="flex flex-col gap-6">
             <h3 className="text-2xl font-syne font-bold text-[#00FFD1]">
               {PORTFOLIO_DATA.personalInfo.name}
             </h3>
@@ -81,7 +81,7 @@ export default function About() {
             {/* Education Card */}
             <div className="mt-8 p-6 glass-card">
               <p className="text-sm terminal-heading mb-3">&gt; education.fetch()</p>
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <p className="text-white font-semibold">
                   {PORTFOLIO_DATA.personalInfo.education.degree}
                 </p>
@@ -96,7 +96,7 @@ export default function About() {
           </motion.div>
 
           {/* Right: Stats */}
-          <motion.div variants={itemVariants} className="space-y-8">
+          <motion.div variants={itemVariants} className="flex flex-col gap-8">
             {/* CGPA Card with Arc Progress */}
             <div className="p-8 glass-card flex flex-col items-center justify-center text-center">
               <p className="text-sm terminal-heading mb-6">&gt; stats.cgpa</p>

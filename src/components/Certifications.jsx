@@ -22,7 +22,7 @@ const Certifications = () => {
           <div className="h-[2px] w-24 bg-gradient-to-r from-warm-amber to-accent-coral mt-4 rounded-full" />
         </motion.div>
 
-        <div className="relative border-l-2 border-white/10 ml-4 md:ml-8 space-y-12">
+        <div className="relative border-l-2 border-white/10 ml-4 md:ml-8 flex flex-col gap-12">
           {PORTFOLIO_DATA.certifications.map((cert, idx) => (
             <motion.div 
               key={idx}

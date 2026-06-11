@@ -40,7 +40,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2 space-y-6"
+            className="lg:col-span-2 flex flex-col gap-6"
           >
             <div className="glass-card p-8 group relative overflow-hidden h-full flex flex-col justify-center gap-8">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon-violet/10 rounded-full blur-3xl group-hover:bg-neon-violet/20 transition-all" />
@@ -87,7 +87,7 @@ const Contact = () => {
             className="lg:col-span-3"
           >
             <form onSubmit={handleSubmit} className="glass-card p-8 border-t-4 border-electric-cyan">
-              <div className="space-y-6">
+              <div className="flex flex-col gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-orbitron text-electric-cyan mb-2">IDENTIFIER (NAME)</label>
                   <input 

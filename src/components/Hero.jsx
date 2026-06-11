@@ -53,7 +53,7 @@ export default function Hero() {
           animate="visible"
         >
           {/* Left: Bio Info */}
-          <div className="space-y-6 lg:col-span-7 text-left order-2 lg:order-1">
+          <div className="flex flex-col gap-6 lg:col-span-7 text-left order-2 lg:order-1 pb-4">
             {/* Greeting */}
             <motion.p
               variants={itemVariants}
@@ -65,7 +65,7 @@ export default function Hero() {
             {/* Main Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-6xl sm:text-7xl md:text-8xl font-syne font-bold tracking-tight leading-none"
+              className="text-6xl sm:text-7xl md:text-8xl font-syne font-bold tracking-tight leading-[1.1] pb-3"
             >
               <span className="block text-white">Ayush</span>
               <span className="block bg-gradient-to-r from-[#00FFD1] to-[#7B2FFF] bg-clip-text text-transparent">
