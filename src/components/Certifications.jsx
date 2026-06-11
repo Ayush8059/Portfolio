@@ -9,16 +9,17 @@ const Certifications = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-orbitron text-white mb-4">
-            VERIFIED_CREDENTIALS
+          <p className="text-electric-cyan font-mono text-sm tracking-widest uppercase mb-2">&gt; credentials.verify()</p>
+          <h2 className="text-5xl md:text-6xl font-syne font-bold text-white">
+            Certifications
           </h2>
-          <div className="w-24 h-1 bg-warm-amber mx-auto rounded-full shadow-[0_0_15px_rgba(255,179,71,0.8)]" />
+          <div className="h-[2px] w-24 bg-gradient-to-r from-warm-amber to-accent-coral mt-4 rounded-full" />
         </motion.div>
 
         <div className="relative border-l-2 border-white/10 ml-4 md:ml-8 space-y-12">

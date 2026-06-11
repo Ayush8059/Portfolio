@@ -63,16 +63,6 @@ const ProjectCard = ({ project, index }) => {
                   <Github size={20} />
                 </a>
               )}
-              {project.link && (
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
-                >
-                  <ExternalLink size={20} />
-                </a>
-              )}
             </div>
           </div>
 
@@ -102,18 +92,17 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <h2 className="text-3xl md:text-5xl font-orbitron text-white">
-              PROJECT_LOGS
-            </h2>
-            <div className="h-[2px] flex-1 bg-gradient-to-r from-electric-cyan to-transparent max-w-sm" />
-          </div>
+          <p className="text-electric-cyan font-mono text-sm tracking-widest uppercase mb-2">&gt; projects.list()</p>
+          <h2 className="text-5xl md:text-6xl font-syne font-bold text-white">
+            Featured Projects
+          </h2>
+          <div className="h-[2px] w-24 bg-gradient-to-r from-electric-cyan to-neon-violet mt-4 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

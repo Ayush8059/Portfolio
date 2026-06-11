@@ -1,78 +1,75 @@
-import React from 'react';
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
+import SkillsOrbit from './SkillsOrbit';
 import { PORTFOLIO_DATA } from '../constants/data';
-import { Code2, Database, Layout, Wrench, BookOpen } from 'lucide-react';
 
-const iconMap = {
-  "Programming": <Code2 size={24} className="text-electric-cyan" />,
-  "Frameworks": <Layout size={24} className="text-neon-violet" />,
-  "Databases": <Database size={24} className="text-warm-amber" />,
-  "Tools": <Wrench size={24} className="text-gray-300" />,
-  "Coursework": <BookOpen size={24} className="text-white" />
-};
-
-const Skills = () => {
+export default function Skills() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
+        staggerChildren: 0.12,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 100 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
-    <section id="skills" className="py-24 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-orbitron text-white mb-4">
-            SKILLS_MATRIX
+    <section id="skills" className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto">
+      {/* Background Glow */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#7B2FFF] rounded-full mix-blend-multiply filter blur-3xl animate-pulse" />
+      </div>
+
+      <motion.div
+        className="relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {/* Section Header */}
+        <motion.div variants={itemVariants} className="mb-16">
+          <p className="text-electric-cyan font-mono text-sm tracking-widest uppercase mb-2">&gt; stack.analyze()</p>
+          <h2 className="text-5xl md:text-6xl font-syne font-bold text-white">
+            Skills & Stack
           </h2>
-          <div className="w-24 h-1 bg-neon-violet mx-auto rounded-full shadow-[0_0_15px_rgba(123,47,255,0.8)]" />
+          <div className="h-[2px] w-24 bg-gradient-to-r from-neon-violet to-accent-coral mt-4 rounded-full" />
         </motion.div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        {/* 3D Orbital Visualization */}
+        <motion.div variants={itemVariants} className="mb-20">
+          <Suspense fallback={<div className="w-full h-96 bg-white/5 rounded-lg animate-pulse" />}>
+            <SkillsOrbit />
+          </Suspense>
+        </motion.div>
+
+        {/* Skills Grid */}
+        <motion.div variants={itemVariants} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PORTFOLIO_DATA.skills.map((skillGroup, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               variants={itemVariants}
-              className="glass-card p-6 hover:-translate-y-2 transition-transform duration-300 group"
+              className="p-6 glass-card hover:border-[#00FFD1]/50 transition-all duration-300 group"
             >
-              <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                <div className="p-3 bg-white/5 rounded-lg group-hover:bg-white/10 transition-colors">
-                  {iconMap[skillGroup.category]}
-                </div>
-                <h3 className="text-xl font-orbitron text-white">{skillGroup.category}</h3>
-              </div>
-              
-              <div className="flex flex-wrap gap-3">
+              <h3 className="text-lg font-syne font-bold text-[#00FFD1] mb-4">
+                {skillGroup.category}
+              </h3>
+
+              <div className="flex flex-wrap gap-2">
                 {skillGroup.items.map((item, i) => (
-                  <span 
-                    key={i} 
-                    className="px-4 py-2 bg-cosmic-black text-sm text-gray-300 rounded-full border border-white/5 hover:border-electric-cyan hover:text-electric-cyan transition-colors"
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-[#00FFD1] hover:border-[#00FFD1]/50 transition-all"
                   >
                     {item}
                   </span>
@@ -81,10 +78,7 @@ const Skills = () => {
             </motion.div>
           ))}
         </motion.div>
-
-      </div>
+      </motion.div>
     </section>
   );
-};
-
-export default Skills;
+}

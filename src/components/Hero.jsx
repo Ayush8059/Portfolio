@@ -1,129 +1,163 @@
-import React, { useState, useEffect } from 'react';
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { Download, ArrowRight } from 'lucide-react';
+import NeuralParticles from './NeuralParticles';
+import MagneticButton from './MagneticButton';
+import TypewriterText from './TypewriterText';
+import Hero3DScene from './Hero3DScene';
 import { PORTFOLIO_DATA } from '../constants/data';
-import heroImage from '../assets/ayush-profile-photo.jpg';
 
-const Hero = () => {
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100);
+export default function Hero() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-  const { titleSequence, name, resumeLink } = PORTFOLIO_DATA.personalInfo;
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
 
-  useEffect(() => {
-    let timer;
-    const currentTitle = titleSequence[titleIndex];
-
-    if (isDeleting) {
-      timer = setTimeout(() => {
-        setDisplayedText(currentTitle.substring(0, displayedText.length - 1));
-        setTypingSpeed(50);
-      }, typingSpeed);
-    } else {
-      timer = setTimeout(() => {
-        setDisplayedText(currentTitle.substring(0, displayedText.length + 1));
-        setTypingSpeed(100);
-      }, typingSpeed);
-    }
-
-    if (!isDeleting && displayedText === currentTitle) {
-      timer = setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && displayedText === '') {
-      timer = setTimeout(() => {
-        setIsDeleting(false);
-        setTitleIndex((prev) => (prev + 1) % titleSequence.length);
-      }, typingSpeed);
-    }
-
-    return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, titleIndex, titleSequence, typingSpeed]);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+  };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          
-          {/* Left Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex-1 text-center lg:text-left z-10"
-          >
-            <h2 className="text-electric-cyan font-orbitron tracking-widest mb-4">HELLO, UNIVERSE. I AM</h2>
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-orbitron mb-6 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-              {name}
-            </h1>
-            
-            <div className="h-12 mb-8">
-              <span className="text-2xl sm:text-3xl text-warm-amber font-sora font-light">
-                {displayedText}
-                <span className="animate-pulse">|</span>
-              </span>
-            </div>
-
-            <p className="text-gray-400 max-w-xl mx-auto lg:mx-0 mb-10 text-lg leading-relaxed">
-              Weaving complex backends with stunning frontends. Ready to bring the future of data and AI to the web.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
-              <a 
-                href="#projects"
-                className="group relative px-8 py-4 bg-electric-cyan text-cosmic-black font-bold rounded-full overflow-hidden transition-all hover:scale-105 glow-cyan"
-              >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                <span className="relative flex items-center gap-2">
-                  View Projects <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </a>
-              
-              <a 
-                href={resumeLink}
-                download="Ayush_Raj_Resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="group px-8 py-4 bg-transparent border border-white/20 hover:border-electric-cyan hover:text-electric-cyan text-white font-bold rounded-full transition-all flex items-center gap-2 hover:shadow-[0_0_15px_rgba(0,245,255,0.3)]"
-              >
-                Download Resume <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Right Profile Content */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="flex-1 relative w-full max-w-sm sm:max-w-md lg:max-w-lg"
-          >
-            <div className="relative mx-auto aspect-square overflow-hidden rounded-full border-4 border-electric-cyan/80 bg-cosmic-navy shadow-[0_0_40px_rgba(0,245,255,0.28)]">
-              <img 
-                src={heroImage} 
-                alt={name}
-                className="h-full w-full object-cover object-center"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
-          </motion.div>
-
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden py-24 lg:py-0">
+      {/* 3D Neural Particles Background */}
+      <Suspense fallback={<div className="absolute inset-0 bg-[#04030A]" />}>
+        <div className="absolute inset-0">
+          <NeuralParticles />
         </div>
+      </Suspense>
+
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#04030A]/20 via-[#04030A]/85 to-[#04030A] pointer-events-none" />
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+        <motion.div
+          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Left: Bio Info */}
+          <div className="space-y-6 lg:col-span-7 text-left order-2 lg:order-1">
+            {/* Greeting */}
+            <motion.p
+              variants={itemVariants}
+              className="text-[#00FFD1] font-mono tracking-widest text-sm uppercase"
+            >
+              &gt; hello.world()
+            </motion.p>
+
+            {/* Main Name */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-6xl sm:text-7xl md:text-8xl font-syne font-bold tracking-tight leading-none"
+            >
+              <span className="block text-white">Ayush</span>
+              <span className="block bg-gradient-to-r from-[#00FFD1] to-[#7B2FFF] bg-clip-text text-transparent">
+                Raj
+              </span>
+            </motion.h1>
+
+            {/* Cycling Titles */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-2 text-xl md:text-2xl font-dm-sans font-medium text-white/90"
+            >
+              <span className="text-[#00FFD1] font-mono">&gt;</span>
+              <TypewriterText
+                texts={[
+                  'Full-Stack Developer',
+                  'ML Researcher',
+                  'Big Data Engineer',
+                  'Building the future',
+                ]}
+                speed={80}
+                delayBetween={2500}
+              />
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl font-dm-sans"
+            >
+              Crafting intelligent, scalable solutions at the intersection of AI, data science, and
+              full-stack development. B.Tech CS @ SRM with a 9.34 CGPA.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
+              <MagneticButton
+                className="px-8 py-4 bg-[#00FFD1] text-[#04030A] font-syne font-bold rounded-lg hover:shadow-lg hover:shadow-[#00FFD1]/40 transition-all duration-300 transform hover:-translate-y-0.5"
+                onClick={() => scrollToSection('projects')}
+              >
+                View Projects
+              </MagneticButton>
+
+              <MagneticButton
+                className="px-8 py-4 border-2 border-white/20 text-white hover:border-[#00FFD1] hover:text-[#00FFD1] font-syne font-bold rounded-lg transition-all duration-300"
+                onClick={() => window.open(PORTFOLIO_DATA.personalInfo.resumeLink, '_blank')}
+              >
+                Download Resume
+              </MagneticButton>
+            </motion.div>
+          </div>
+
+          {/* Right: 3D Interactive Portrait */}
+          <motion.div 
+            variants={itemVariants} 
+            className="lg:col-span-5 w-full flex justify-center order-1 lg:order-2"
+          >
+            <Suspense fallback={
+              <div className="w-64 h-80 bg-white/5 rounded-2xl animate-pulse flex items-center justify-center">
+                <span className="text-white/30 font-mono">system.3D_render()</span>
+              </div>
+            }>
+              <div className="w-full max-w-[340px] md:max-w-[400px]">
+                <Hero3DScene />
+              </div>
+            </Suspense>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          variants={itemVariants}
+          className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <p className="text-xs text-white/40 uppercase tracking-widest mb-2 font-mono">Scroll to explore</p>
+          <svg
+            className="w-4 h-4 text-[#00FFD1]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </motion.div>
       </div>
-      
-      {/* Scroll indicator down */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-electric-cyan uppercase tracking-widest font-orbitron">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-electric-cyan to-transparent" />
-      </motion.div>
     </section>
   );
-};
-
-export default Hero;
+}

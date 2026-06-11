@@ -19,16 +19,17 @@ const Contact = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-orbitron text-white mb-4">
-             ESTABLISH_CONNECTION
+          <p className="text-electric-cyan font-mono text-sm tracking-widest uppercase mb-2">&gt; socket.connect()</p>
+          <h2 className="text-5xl md:text-6xl font-syne font-bold text-white">
+            Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-electric-cyan mx-auto rounded-full glow-cyan" />
+          <div className="h-[2px] w-24 bg-gradient-to-r from-electric-cyan to-neon-violet mt-4 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
